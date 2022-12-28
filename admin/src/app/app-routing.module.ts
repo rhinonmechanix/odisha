@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
 import { AuthComponent } from "./layouts/auth/auth.component";
+import { NewsUploadComponent } from "./layouts/news-upload/news-upload.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
@@ -28,12 +29,13 @@ const routes: Routes = [
     path: "admin",
     component: AdminComponent,
     children: [
-      { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: "dashboard", component: DashboardComponent },
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
+      { path: "news-upload", component: NewsUploadComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
-    ],
+    ], canActivate: [AuthGuard]
   },
   // auth views
   {
@@ -47,8 +49,8 @@ const routes: Routes = [
     ],
   },
   // no layout views
-  { path: "profile", component: ProfileComponent },
-  { path: "landing", component: LandingComponent },
+  { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: "landing", component: LandingComponent, canActivate: [AuthGuard] },
   { path: "", redirectTo: "auth/login", pathMatch: "full" },
 ];
 
