@@ -8,14 +8,15 @@
           </div>
         </div>
         <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form>
+
+          <!-- <form #registerForm="ngForm" (ngSubmit)="registerPassword(registerForm.value)">
             <div class="relative w-full mb-3">
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
                 Name
               </label>
-              <input type="email"
+              <input type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                placeholder="Name" />
+                name="username" ngModel />
             </div>
 
             <div class="relative w-full mb-3">
@@ -24,7 +25,7 @@
               </label>
               <input type="email"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                placeholder="Email" />
+                name="email" ngModel />
             </div>
 
             <div class="relative w-full mb-3">
@@ -33,10 +34,142 @@
               </label>
               <input type="password"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                placeholder="Password" />
+                name="password" ngModel />
             </div>
 
-            <!-- <div>
+            <div class="text-center mt-6">
+              <button
+                class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
+                Create Account
+              </button>
+            </div>
+          </form> -->
+
+          <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" formControlName="username" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" formControlName="password" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Register
+              </button>
+              <a routerLink="../login" class="btn btn-link">Cancel</a>
+            </div>
+          </form> -->
+
+
+
+
+
+
+          <form>
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                Name
+              </label>
+              <input type="text"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                name="username" [(ngModel)]='registerOjb.username' />
+            </div>
+
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                Email
+              </label>
+              <input type="email"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                name="email" [(ngModel)]='registerOjb.email' />
+            </div>
+
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                Password
+              </label>
+              <input type="password"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                name="password" [(ngModel)]='registerOjb.password' />
+            </div>
+
+            <div class="text-center mt-6">
+              <button (click)="sendData()"
+                class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
+                Create Account
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <form #registerForm="ngForm" (ngSubmit)="registerPassword(registerForm.value)">
+  <div class="relative w-full mb-3">
+    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+      Name
+    </label>
+    <input type="text"
+      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+      name="username" ngModel />
+  </div>
+
+  <div class="relative w-full mb-3">
+    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+      Email
+    </label>
+    <input type="email"
+      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+      name="email" ngModel />
+  </div>
+
+  <div class="relative w-full mb-3">
+    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+      Password
+    </label>
+    <input type="password"
+      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+      name="password" ngModel />
+  </div>
+
+  <div class="text-center mt-6">
+    <button
+      class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
+      Create Account
+    </button>
+  </div>
+</form> -->
+
+
+
+
+
+<!-- <div>
               <label class="inline-flex items-center cursor-pointer">
                 <input id="customCheckLogin" type="checkbox"
                   class="form-checkbox border-0 text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150 rounded" />
@@ -48,17 +181,3 @@
                 </span>
               </label>
             </div> -->
-
-            <div class="text-center mt-6">
-              <button
-                class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                type="button">
-                Create Account
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

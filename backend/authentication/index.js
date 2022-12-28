@@ -6,6 +6,7 @@ const dbConfig = require("./config/db.config");
 const auth = require("./middlewares/auth.js");
 const errors = require("./middlewares/errors.js");
 const unless = require("express-unless");
+const cors = require('cors');
 
 // connect to mongodb
 
@@ -55,7 +56,44 @@ app.use(express.json());
 app.use("/users", require("./routes/users.routes"));
 
 // middleware for error responses
-app.use(errors.errorHandler);
+
+// const allowedOrigins = [
+//   'capacitor://localhost',
+//   'ionic://localhost',
+//   'http://localhost',
+//   'http://localhost:4200',
+// ];
+
+// // Reflect the origin if it's in the allowed list or not defined (cURL, Postman, etc.)
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (allowedOrigins.includes(origin) || !origin) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Origin not allowed by CORS'));
+//     }
+//   },
+// };
+
+// Enable preflight requests for all routes
+// app.options('*', cors(corsOptions));
+
+var whitelist = [
+  "http://localhost:4200",
+];
+
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) != -1) {
+      callback(null, true);
+    } else {
+      console.log("Not allowed by CORS origin:" + origin);
+      callback(new Error("Not allowed by CORS origin:" + origin));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
 
 // listen for requests
 app.listen(process.env.port || 3000, function () {

@@ -12,11 +12,11 @@ import { NotificationComponent } from './notification/notification.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    NotificationComponent
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
