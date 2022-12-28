@@ -10,6 +10,7 @@ import { DashboardComponent } from "./views/admin/dashboard/dashboard.component"
 import { MapsComponent } from "./views/admin/maps/maps.component";
 import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
+import { AuthGuard } from "./views/auth/auth.guard";
 import { ForgotPasswordComponent } from "./views/auth/forgot-password/forgot-password.component";
 
 // auth views
@@ -27,7 +28,7 @@ const routes: Routes = [
     path: "admin",
     component: AdminComponent,
     children: [
-      { path: "dashboard", component: DashboardComponent },
+      { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
@@ -48,8 +49,7 @@ const routes: Routes = [
   // no layout views
   { path: "profile", component: ProfileComponent },
   { path: "landing", component: LandingComponent },
-  { path: "", component: IndexComponent },
-  { path: "**", redirectTo: "", pathMatch: "full" },
+  { path: "", redirectTo: "auth/login", pathMatch: "full" },
 ];
 
 @NgModule({

@@ -27,4 +27,7 @@ export class UserDropdownComponent implements AfterViewInit {
       this.dropdownPopoverShow = true;
     }
   }
+  logOut() {
+    localStorage.removeItem('token');
+  }
 }
