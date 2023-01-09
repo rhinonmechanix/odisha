@@ -131,6 +131,19 @@
             News Upload
           </a>
         </li>
+        <li class="items-center">
+          <a [routerLink]="['/admin/google']" class="text-xs uppercase py-3 font-bold block" routerLinkActive
+            #adminGoogle="routerLinkActive" [ngClass]="
+            adminGoogle.isActive
+                ? 'text-red-600 hover:text-red-700'
+                : 'text-blueGray-700 hover:text-blueGray-500'
+            ">
+            <i class="fas fa-map-marked mr-2 text-sm" [ngClass]="
+            adminGoogle.isActive ? 'opacity-75' : 'text-blueGray-300'
+              "></i>
+            Google
+          </a>
+        </li>
       </ul>
 
       <!-- NewsUploadComponent -->

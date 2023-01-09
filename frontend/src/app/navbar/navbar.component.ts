@@ -6,6 +6,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  drawer: any;
+  menuHandler: boolean = true;
+  mdOptions: boolean = true;
+  search: boolean = true;
+  isOpenedList: any;
+
+  openMenu(source: any) {
+    this.isOpenedList = source;
+  }
+  closeMenu() {
+    this.isOpenedList = -1;
+  }
+
+  menuHandlerBtn() {
+    this.menuHandler = !this.menuHandler;
+  }
+  mdOptionsToggle() {
+    this.mdOptions = !this.mdOptions;
+  }
+  searchToggle() {
+    this.search = !this.search;
+  }
+  constructor() { }
+
+  ngOnInit(): void { }
+
 
 }
