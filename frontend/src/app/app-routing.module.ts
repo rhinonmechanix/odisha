@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryComponent } from './grid/category/category.component';
 import { HomeComponent } from './home/home.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent,
+    component: SidenavComponent,
   },
-  {
-    path: "home",
-    component: CategoryComponent,
-  }
+  // {
+  //   path: "home",
+  //   component: CategoryComponent,
+  // }
 ];
 
 @NgModule({
