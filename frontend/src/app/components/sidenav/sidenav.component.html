@@ -67,6 +67,16 @@
                 <div
                     class="block w-full p-6 rounded-lg shadow-lg bg-zinc-900 max-w-sm text-white text-center justify-center">
                     <p>Latest News Updates</p>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide relative" data-bs-ride="carousel">
+                        <div class="carousel-inner relative w-full overflow-hidden">
+                            <div class="carousel-item active relative float-left w-full"
+                                *ngFor="let item of news; let index = index; let isFirst = first"
+                                [ngClass]="{ active: isFirst }">
+                                <img class="rounded-lg pb-5" src="{{item.urlToImage}}" alt="{{item.source.id}}">
+                                <a href="{{item.url}}">{{item.title}}</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </ul>
